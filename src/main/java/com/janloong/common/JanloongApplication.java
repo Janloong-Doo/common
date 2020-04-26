@@ -20,8 +20,10 @@ import java.time.Duration;
 import java.time.Instant;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-06-13 11:58
+ * 默认的启动类配置(可根据个人需求重新自定义配置)
+ *
+ * @author <a href ="mailto: janloongdoo@gmail.com">Janloong Doo</a>
+ * @since 2019-06-13 11:58
  */
 public class JanloongApplication {
 

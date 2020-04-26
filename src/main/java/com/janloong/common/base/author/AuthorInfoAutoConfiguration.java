@@ -19,14 +19,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * 用户信息自动配置
+ *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-15 17:56
+ * @since 2019-05-15 17:56
  */
 @Configuration
 @ConditionalOnWebApplication
 @ConditionalOnClass(AuthorInfoProvider.class)
 @EnableConfigurationProperties(AuthorInfo.class)
 public class AuthorInfoAutoConfiguration {
+
     @Autowired
     private AuthorInfo authorInfo;
 

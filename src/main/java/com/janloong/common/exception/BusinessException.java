@@ -10,6 +10,7 @@
 package com.janloong.common.exception;
 
 
+import com.janloong.common.entity.ErrorInfo;
 import com.janloong.common.enums.ResultEnum;
 
 /**
@@ -20,16 +21,27 @@ public class BusinessException extends RuntimeException {
     private Integer code;
     private String msg;
     private boolean isSuccess = false;
+    private ErrorInfo errorInfo;
+
 
     public BusinessException(ResultEnum resultEnum) {
+        super(resultEnum.getMsg());
         this.code = resultEnum.getCode();
         this.msg = resultEnum.name();
     }
+
+    public BusinessException(ErrorInfo errorInfo) {
+
+        //this.code = resultEnum.getCode();
+        //this.msg = resultEnum.name();
+    }
+
 
     public BusinessException(ResultEnum resultEnum, boolean isSuccess) {
         this.code = resultEnum.getCode();
         this.msg = resultEnum.name();
         this.isSuccess = isSuccess;
+
     }
 
     public Integer getCode() {

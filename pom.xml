@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.janloong</groupId>
     <artifactId>spring-boot-starter-common</artifactId>
-    <version>1.0.0</version>
+    <version>0.0.1</version>
     <name>common</name>
     <packaging>jar</packaging>
     <description>SpringBoot Public foundation integration</description>

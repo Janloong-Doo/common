@@ -16,8 +16,11 @@ import java.beans.Transient;
 import java.io.Serializable;
 
 /**
+ * 返回结果封装
+ *
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-21 10:41
+ * @version 1.0.0
+ * @since 2019-05-21 10:41
  */
 @ToString
 @NoArgsConstructor

@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2019-05-21 00:18
+ * @since 2019-05-21 00:18
  */
 @Configuration
 @ConditionalOnWebApplication
