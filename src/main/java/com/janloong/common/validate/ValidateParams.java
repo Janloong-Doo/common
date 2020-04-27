@@ -10,7 +10,7 @@ package com.janloong.common.validate;
  *
  * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
  * @version V1.0
- * @since: 2020-01-04 17:31
+ * @since 2020-01-04 17:31
  **/
 public class ValidateParams {
 

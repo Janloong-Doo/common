@@ -18,7 +18,7 @@ import java.util.Objects;
 /**
  * controller层响应结果切面
  *
- * @author <a href ="https://blog.janloongdoo.com">Janloong Doo</a>
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
  * @version 1.0.0
  * @since 2020-04-26 17:10
  **/

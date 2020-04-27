@@ -14,57 +14,34 @@ import com.janloong.common.entity.ErrorInfo;
 import com.janloong.common.enums.ResultEnum;
 
 /**
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
- * @date 2018-05-14 9:26
+ * 自定义异常类（可继承扩展）
+ *
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
+ * @since 2018-05-14 9:26
  */
 public class BusinessException extends RuntimeException {
-    private Integer code;
-    private String msg;
-    private boolean isSuccess = false;
+
     private ErrorInfo errorInfo;
 
 
     public BusinessException(ResultEnum resultEnum) {
         super(resultEnum.getMsg());
-        this.code = resultEnum.getCode();
-        this.msg = resultEnum.name();
+        this.errorInfo.setCode(resultEnum.getCode());
+        this.errorInfo.setMsg(resultEnum.name());
     }
 
     public BusinessException(ErrorInfo errorInfo) {
-
-        //this.code = resultEnum.getCode();
-        //this.msg = resultEnum.name();
+        this.errorInfo = errorInfo;
     }
-
 
     public BusinessException(ResultEnum resultEnum, boolean isSuccess) {
-        this.code = resultEnum.getCode();
-        this.msg = resultEnum.name();
-        this.isSuccess = isSuccess;
-
+        this.errorInfo.setCode(resultEnum.getCode());
+        this.errorInfo.setMsg(resultEnum.name());
+        this.errorInfo.setSuccess(isSuccess);
     }
 
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public boolean isSuccess() {
-        return isSuccess;
-    }
-
-    public void setSuccess(boolean success) {
-        isSuccess = success;
+    public ErrorInfo getErrorInfo() {
+        return errorInfo;
     }
 }

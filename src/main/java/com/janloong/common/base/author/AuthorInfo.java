@@ -16,6 +16,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * 用户信息配置
  *
  * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
  * @since 2019-05-15 11:55
  **/
 @ConfigurationProperties(prefix = "author")

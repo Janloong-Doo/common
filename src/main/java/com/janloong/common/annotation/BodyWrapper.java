@@ -19,7 +19,7 @@ import java.lang.annotation.*;
  * 则返回 hello,janloong doo.
  * }</pre>
  *
- * @author <a href ="https://blog.janloongdoo.com">Janloong Doo</a>
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
  * @version 1.0.0
  * @since 2020-04-26 17:21
  **/

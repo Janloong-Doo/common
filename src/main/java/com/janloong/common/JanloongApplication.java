@@ -22,7 +22,8 @@ import java.time.Instant;
 /**
  * 默认的启动类配置(可根据个人需求重新自定义配置)
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong Doo</a>
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
  * @since 2019-06-13 11:58
  */
 public class JanloongApplication {

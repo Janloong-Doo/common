@@ -18,7 +18,7 @@ import java.io.Serializable;
 /**
  * 返回结果封装
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
  * @version 1.0.0
  * @since 2019-05-21 10:41
  */
@@ -32,10 +32,13 @@ public class ResponseResult implements Serializable {
     private static final String MSG = "成功";
 
     @Getter
+    @Setter
     private Integer code = CODE;
     @Getter
+    @Setter
     private String msg = MSG;
     @Getter
+    @Setter
     private Boolean success = true;
 
     @Getter

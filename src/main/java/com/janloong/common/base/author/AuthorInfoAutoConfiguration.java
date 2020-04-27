@@ -21,7 +21,8 @@ import org.springframework.context.annotation.Configuration;
 /**
  * 用户信息自动配置
  *
- * @author <a href ="mailto: janloongdoo@gmail.com">Janloong</a>
+ * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
+ * @version 1.0.0
  * @since 2019-05-15 17:56
  */
 @Configuration
