@@ -22,8 +22,8 @@ import java.util.Objects;
  * @version 1.0.0
  * @since 2020-04-26 17:10
  **/
-@Configuration
-@ControllerAdvice
+//@Configuration
+//@ControllerAdvice
 public class ControllerResponseAdvice implements ResponseBodyAdvice {
     @Resource
     private IBodyWrapper iBodyWrapper;

@@ -34,8 +34,8 @@ import java.util.Objects;
  * 对请求进行记录
  *
  * @author <a href ="https://blog.janloong.com">Janloong Doo</a>
- * @since  2017-12-28 16:20
  * @version 1.0.0
+ * @since 2017-12-28 16:20
  **/
 @Aspect
 @Component
@@ -63,10 +63,10 @@ public class HttpAspect {
 
 
         Object[] args = joinPoint.getArgs();
-        log.error("\n请求结果 - " + className + "." + methodName + ": " + "\n"
+        log.debug("\n请求结果 - " + className + "." + methodName + ": " + "\n"
                 + "object:" + object + "\n"
         );
-        log.info("able: " + jsonAble);
+        log.debug("able: " + jsonAble);
         if (jsonAble) {
             String name = methodName;
             String s = Arrays.toString(args);
@@ -75,7 +75,7 @@ public class HttpAspect {
                 name = name + "-" + replace;
             }
             String fileName = jsonFile + File.separator + name;
-            log.info("\n - : " + "\n"
+            log.debug("\n - : " + "\n"
                     + "fileName:" + fileName + "\n"
             );
             JsonUtil.writeToFIle(fileName, object);
@@ -99,7 +99,7 @@ public class HttpAspect {
         Signature signature = joinPoint.getSignature();
         String className = signature.getDeclaringTypeName();
         String methodName = signature.getName();
-        log.error("\n请求前 - : " + "\n"
+        log.debug("\n请求前 - : " + "\n"
                 + "remoteUser:" + remoteUser + "\n"
                 + "remotePort:" + remotePort + "\n"
                 + "remoteAddr:" + remoteAddr + "\n"
