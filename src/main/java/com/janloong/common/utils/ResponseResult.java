@@ -10,9 +10,9 @@
 package com.janloong.common.utils;
 
 
+import com.janloong.common.entity.Msg;
 import lombok.*;
 
-import java.beans.Transient;
 import java.io.Serializable;
 
 /**
@@ -55,6 +55,9 @@ public class ResponseResult implements Serializable {
     }
 
     public static ResponseResult success(Object data) {
+        if (data instanceof Msg) {
+            return new ResponseResult(CODE, ((Msg) data).getMsg(), false, null);
+        }
         return new ResponseResult(CODE, MSG, true, data);
     }
 
@@ -77,6 +80,4 @@ public class ResponseResult implements Serializable {
     static ResponseResult error(Integer code, String msg, Object data) {
         return new ResponseResult(code, msg, false, data);
     }
-
-
 }
