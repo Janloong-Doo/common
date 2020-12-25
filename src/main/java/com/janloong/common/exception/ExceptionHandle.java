@@ -15,13 +15,13 @@ import com.janloong.common.utils.ResponseResult;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.support.GenericConversionService;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -40,25 +40,6 @@ import java.time.LocalTime;
 @ControllerAdvice
 @Slf4j
 public class ExceptionHandle {
-
-    @ExceptionHandler(value = {RuntimeException.class, Exception.class})
-    @ResponseBody
-    public ResponseResult handle(Exception e) {
-        if (e instanceof BusinessException) {
-            BusinessException bussinesException = (BusinessException) e;
-            ErrorInfo errorInfo = bussinesException.getErrorInfo();
-            if (errorInfo.isSuccess()) {
-                log.info("[业务正常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
-                return ResponseResult.success(errorInfo.getCode(), errorInfo.getMsg(), null);
-            } else {
-                log.error("[业务异常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
-                return ResponseResult.error(errorInfo.getCode(), errorInfo.getMsg());
-            }
-        } else {
-            log.error("[系统异常]: {}", e);
-            return ResponseResult.error(ResultEnum.ERROR.getCode(), e.getMessage());
-        }
-    }
 
     @Autowired
     @Qualifier(value = "localDateTimeConverter")
@@ -96,5 +77,56 @@ public class ExceptionHandle {
         //        setValue(new DateConverter().convert(text));
         //    }
         //});
+    }
+
+    //@ExceptionHandler(value = {RuntimeException.class, Exception.class})
+    //@ResponseBody
+    //public ResponseResult handleBusinessException(Exception e) {
+    //    if (e instanceof BusinessException) {
+    //        BusinessException bussinesException = (BusinessException) e;
+    //        ErrorInfo errorInfo = bussinesException.getErrorInfo();
+    //        if (errorInfo.isSuccess()) {
+    //            log.info("[业务正常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+    //            return ResponseResult.success(errorInfo.getCode(), errorInfo.getMsg(), null);
+    //        } else {
+    //            log.error("[业务异常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+    //            return ResponseResult.error(errorInfo.getCode(), errorInfo.getMsg());
+    //        }
+    //    } else {
+    //        log.error("[系统异常]: {}", e);
+    //        return ResponseResult.error(ResultEnum.ERROR.getCode(), e.getMessage());
+    //    }
+    //}
+
+    @ExceptionHandler(value = BusinessException.class)
+    @ResponseBody
+    public ResponseResult handleBusinessException(Exception e) {
+        BusinessException bussinesException = (BusinessException) e;
+        ErrorInfo errorInfo = bussinesException.getErrorInfo();
+        if (errorInfo.isSuccess()) {
+            log.info("[业务正常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+            return ResponseResult.success(errorInfo.getCode(), errorInfo.getMsg(), null);
+        } else {
+            log.error("[业务异常] [{} - {}]", errorInfo.getCode(), errorInfo.getMsg());
+            return ResponseResult.error(errorInfo.getCode(), errorInfo.getMsg());
+        }
+    }
+
+    @ConditionalOnClass(AccessDeniedException.class)
+    @ExceptionHandler(value = {AccessDeniedException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ResponseResult handleAccessDeniedException(Exception e) {
+        log.error("[权限异常-{}]: {}", "AccessDeniedException", e.getMessage(), e);
+        return ResponseResult.error(ResultEnum.ERROR.getCode(), e.getMessage());
+    }
+
+
+    @ExceptionHandler(value = {RuntimeException.class, Exception.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseResult handle(Exception e) {
+        log.error("[系统异常-{}]: {}", "Exception", e.getMessage(), e);
+        return ResponseResult.error(ResultEnum.ERROR.getCode(), e.getMessage());
     }
 }

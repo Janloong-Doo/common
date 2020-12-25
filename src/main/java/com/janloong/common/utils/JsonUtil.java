@@ -10,11 +10,11 @@
 package com.janloong.common.utils;
 
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
+import cn.hutool.json.JSONUtil;
 import com.janloong.common.enums.ResultEnum;
 import com.janloong.common.exception.BusinessException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -37,12 +37,12 @@ public class JsonUtil {
         if (!response.isSuccess()) {
             throw new BusinessException(ResultEnum.ERROR);
         }
-        String s1 = JSON.toJSONString(response);
+        String s1 = JSONUtil.toJsonStr(response);
         Object data = response.getData();
         if (data instanceof List) {
             List list = (List) data;
             JSONArray jsonArray = new JSONArray(list);
-            String s = jsonArray.toJSONString();
+            String s = jsonArray.toString();
             File file = new File(fileName);
             FileWriter fileWriter;
             try {
