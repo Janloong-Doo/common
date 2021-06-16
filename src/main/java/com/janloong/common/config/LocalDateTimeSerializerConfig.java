@@ -56,6 +56,11 @@ public class LocalDateTimeSerializerConfig {
      */
     public static final String DEFAULT_TIME_FORMAT = "HH:mm:ss";
 
+    //@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd HH:mm:ss")
+    //@JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    //@JsonSerialize()
 
     /**
      * String --> LocalDate
