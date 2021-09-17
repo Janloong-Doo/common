@@ -23,3 +23,15 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+**/.mvn
+### **/test
+/spring-demo/webcrawler/target/classes/application.yml
+/spring-demo/webcrawler/target/classes/templates/html/index.html
+/spring-demo/webcrawler/target/classes/templates/html/spiderResult.html
+/jdk-study/target/classes/com/janloong/javabase/initing/utils/Animal.class
+*/target
+**/jdk/jdk13
+/auth.yml
+/spring-demo/spring-security/src/main/resources/application-home.yml
+/application.pid
+**/target/**
