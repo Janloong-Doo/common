@@ -21,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnWebApplication
 @ConditionalOnClass(JsonResultProvider.class)
 @EnableConfigurationProperties(JsonResult.class)
+@RefreshScope
 @Slf4j
 public class JsonResultAutoConfigure {
 
